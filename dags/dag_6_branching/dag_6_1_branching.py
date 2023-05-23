@@ -1,7 +1,6 @@
 from airflow import DAG
 from airflow.operators.python import BranchPythonOperator
 from airflow.decorators import task, dag
-from airflow.utils.task_group import TaskGroup
 from airflow.operators.dummy import DummyOperator
 
 from datetime import datetime, timedelta
