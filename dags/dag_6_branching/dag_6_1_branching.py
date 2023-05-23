@@ -48,7 +48,7 @@ default_args = {
 
 def dag_6_1_branching():
 
-    start = DummyOperator(task_id="start")
+    start = DummyOperator(task_id="start", trigger_rule='all_success')
 
     choosing_partner_based_on_day = BranchPythonOperator(
         task_id="choosing_partner_based_on_day",
