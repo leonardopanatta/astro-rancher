@@ -6,7 +6,7 @@ from airflow.operators.dummy import DummyOperator
 from datetime import datetime, timedelta
 from typing import Dict
 
-from dag_5_dynamic.group.process_tasks import process_tasks
+from dag_6_branching.group.process_tasks import process_tasks
 
 partners = {
     "partner_snowflake": {
