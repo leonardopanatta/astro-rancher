@@ -65,6 +65,7 @@ def _extract_failure_callback(context):
 
 def _extract_retry_callback(context):
     #if(context['ti'].try_number() > 2):
+
     print('RETRY CALLBACK')
 
 def _sla_miss_callback(dag, task_list, blocking_task_list, slas, blocking_tis):
@@ -84,7 +85,7 @@ def _sla_miss_callback(dag, task_list, blocking_task_list, slas, blocking_tis):
     sla_miss_callback=_sla_miss_callback
 )
 
-def dag_93_1_callback():
+def dag_94_1_external_sensor():
 
     start = DummyOperator(task_id="start", trigger_rule='all_success', execution_timeout=timedelta(minutes=10))
 
@@ -119,10 +120,9 @@ def dag_93_1_callback():
                      depends_on_past=True, priority_weight=details['priority'], do_xcom_push=False, pool=details['pool'], multiple_outputs=True)
         def extract(partner_name, partner_path):
             time.sleep(3)
-            raise ValueError("failed")
             return {"partner_name": partner_name, "partner_path": partner_path}
         extracted_values = extract(details['name'], details['path'])
         start >> extracted_values
         process_tasks(extracted_values) >> storing
 
-dag = dag_93_1_callback()
+dag = dag_94_1_external_sensor()
