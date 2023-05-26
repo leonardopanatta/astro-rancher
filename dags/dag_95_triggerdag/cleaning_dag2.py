@@ -20,4 +20,4 @@ with DAG(
         postgres_conn_id='postgres'
     )
 
-    waiting_for_task >> cleaning_xcoms
+    #waiting_for_task >> cleaning_xcoms

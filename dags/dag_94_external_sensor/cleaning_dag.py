@@ -17,10 +17,10 @@ with DAG(
     waiting_for_task = ExternalTaskSensor(
         task_id='waiting_for_task',
         external_dag_id='dag_94_1_external_sensor',
-        external_task_id='storing',
+        external_task_id='storing'
         #execution_date_fn=
-        failed_states=['failed', 'skipped'],
-        failed_states=['success']
+        #failed_states=['failed', 'skipped'],
+        #failed_states=['success']
     )
 
     cleaning_xcoms = PostgresOperator(
